@@ -11,10 +11,10 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-import hadoop_test1.test.mapper.RecordCountMapper;
+import hadoop_test1.test.mapper.RecordSumMapper;
 import hadoop_test1.test.reducer.ReducerSum;
 
-public class ExecuterOne extends Configured implements Tool{
+public class ExecuterTwo extends Configured implements Tool{
 
 	public static void main(String[] args) throws Exception {
 		int exitCode = ToolRunner.run(new ExecuterOne(), args);
@@ -28,7 +28,7 @@ public class ExecuterOne extends Configured implements Tool{
 
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 
-		job.setMapperClass(RecordCountMapper.class);
+		job.setMapperClass(RecordSumMapper.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
